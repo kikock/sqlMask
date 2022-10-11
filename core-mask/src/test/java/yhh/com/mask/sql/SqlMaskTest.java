@@ -20,7 +20,14 @@ public class SqlMaskTest {
         Assert.assertEquals(maskSql.replace("\r", " ").replace("\n", " ").replaceAll("\\s+", " "),
                 expectSql.replace("\r", " ").replace("\n", " ").replaceAll("\\s+", " "));
     }
-
+    @Test
+    public void sqlTest88() throws Exception {
+        String originSql = "select  '\"' aaa, a.* from emps a;";
+        String expectSql = "select hash_fun(1, 5, emps.name, '*') as name\n" +
+                "from sales.emps as emps";
+        String maskSql = qs3.getMaskSql(originSql);
+        compareSql(maskSql, expectSql);
+    }
     @Test
     public void sqlTest1() throws Exception {
         String originSql = "select name from emps";
