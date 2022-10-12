@@ -26,9 +26,10 @@ import java.util.Locale;
 @Service
 public class QueryService3 {
 
-    @Value("${mask.calcite.model.path}")
-    private String modelPath;
-
+    @Value("${mask.calcite.model.path_mysql}")
+    private String modelPathMysql;
+    @Value("${mask.calcite.model.path_file}")
+    private String modelPathFile;
     private Statement stmt;
 
     public String getMaskSql(String originSql) throws SqlParseException {
@@ -47,12 +48,13 @@ public class QueryService3 {
         }
     }
 
+    // spring容器初始化的时候执行
     @PostConstruct
     private void init() throws Exception {
-        ClassPathResource resource = new ClassPathResource(modelPath);
-        File file = resource.getFile();
-        Connection conn = QueryConnection.getConnection(file.getAbsolutePath());
-        stmt = conn.createStatement();
+        // ClassPathResource resource = new ClassPathResource(modelPathMysql);
+        // File file = resource.getFile();
+        // Connection conn = QueryConnection.getConnectionDatabase(file.getAbsolutePath());
+        // stmt = conn.createStatement();
     }
 
     private void addHandler(MaskContext context, HandlerChain handlerChain) {
@@ -64,4 +66,6 @@ public class QueryService3 {
         handlerChain.addHandler(new ExtractOriginColumnHandler(context));
         handlerChain.addHandler(new RewriteSqlWithPolicyHandler(context));
     }
+
+
 }

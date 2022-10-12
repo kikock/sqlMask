@@ -1,4 +1,5 @@
 mask:
   calcite:
     model:
-      path: sales-csv.json
+      path_mysql: mysql-csv.json
+      path_file: sales-csv.json
