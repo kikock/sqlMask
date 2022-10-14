@@ -1,14 +1,14 @@
 {
   "version": "1.0",
-  "defaultSchema": "sales",
+  "defaultSchema": "nav",
   "schemas": [
     {
       "factory": "org.apache.calcite.adapter.jdbc.JdbcSchema$Factory",
-      "name": "sales",
+      "name": "nav",
       "operand": {
         "jdbcDriver": "com.mysql.cj.jdbc.Driver",
         "jdbcPassword": "111111",
-        "jdbcUrl": "jdbc:mysql://localhost:3306/sales?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8",
+        "jdbcUrl": "jdbc:mysql://localhost:3306/nav?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8",
         "jdbcUser": "root"
       },
       "type": "custom"
